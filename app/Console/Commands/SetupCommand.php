@@ -7,19 +7,19 @@ use Illuminate\Console\Command;
 
 class SetupCommand extends Command
 {
-    protected $signature = 'octo:setup';
+    protected $signature = 'speedest:setup';
 
     protected $description = 'Setup assistant';
 
-    private const DEFAULT_ADMIN_NAME = 'Octo Administrator';
+    private const DEFAULT_ADMIN_NAME = 'Usain Bolt';
 
-    private const DEFAULT_ADMIN_EMAIL = 'admin@octo.dev';
+    private const DEFAULT_ADMIN_EMAIL = 'usain@speedets.dev';
 
-    private const DEFAULT_ADMIN_PASSWORD = 'octoAdmin';
+    private const DEFAULT_ADMIN_PASSWORD = 'UsainBolt';
 
     public function handle()
     {
-        $this->info("\nOcto Installer");
+        $this->info("\nSpeedest Installer");
         $this->info("--------------------\n");
 
         $this->maybeGenerateAppKey();

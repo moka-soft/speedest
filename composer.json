@@ -1,9 +1,10 @@
 {
-    "name": "a2ensite/octo",
+    "name": "atiladanvi/speedest",
     "type": "project",
-    "description": "The web network.",
+    "description": "Start the race!",
     "keywords": [
-        "system"
+        "laravel",
+        "php"
     ],
     "license": "MIT",
     "require": {

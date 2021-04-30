@@ -1,4 +1,4 @@
-# Octo
+# Speedest
 
 [![GitHub license](https://img.shields.io/github/license/gothinkster/laravel-realworld-example-app.svg)](https://raw.githubusercontent.com/gothinkster/laravel-realworld-example-app/master/LICENSE)
 
@@ -15,11 +15,11 @@ Please check the official laravel installation guide for server requirements bef
 
 Clone the repository
 
-    git clone https://github.com/a2insights/octo.git
+    git clone https://github.com/Atiladanvi/speedest.git
 
 Switch to the repo folder
 
-    cd octo
+    cd speedest
 
 Install all the dependencies using composer
 
@@ -33,7 +33,7 @@ Generate a new application key
 
     php artisan key:generate
     
-Flush de aplcation cache
+Flush de application cache
 
     php artisan optimize
 
@@ -49,9 +49,11 @@ You can now access the server at http://localhost:8000
 
 **TL;DR command list**
 
-    git clone https://github.com/a2insights/octo.git
-    cd octo
+    git clone https://github.com/Atiladanvi/speedest.git
+    cd speedest
     composer install
+    npm install
+    npm run dev
     cp .env.example .env
     php artisan key:generate
     php artisan optimize

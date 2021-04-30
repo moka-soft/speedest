@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::group([
     'middleware' => ['web', 'auth:sanctum', 'verified'],
 ], function () {
-    Route::prefix('dashboard')->group(function () {
-        Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-    });
+    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 });
+
