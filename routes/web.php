@@ -15,5 +15,6 @@ Route::group([
     'middleware' => ['web', 'auth:sanctum', 'verified'],
 ], function () {
     Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/runners', [\App\Http\Controllers\RunnerController::class, 'index'])->name('runners');
 });
 
