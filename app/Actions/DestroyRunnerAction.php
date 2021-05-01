@@ -20,6 +20,6 @@ class DestroyRunnerAction extends Action
 
         session()->flash('notifier',['text'=>__("Runner $model->name was deleted!")]);
 
-        redirect()->route('runner.index');
+        redirect()->route('runners');
     }
 }

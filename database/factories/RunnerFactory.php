@@ -13,7 +13,7 @@ class RunnerFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'cpf' => $this->faker->numerify('###########'),
+            'cpf' => $this->faker->numerify('###.###.###-##'),
             'birth_date' => $this->faker->date(),
         ];
     }

@@ -4,21 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRunnersTable extends Migration
+class CreateRacesTable extends Migration
 {
     public function up()
     {
-        Schema::create('runners', function (Blueprint $table) {
+        Schema::create('races', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('type_id');
             $table->string('name');
-            $table->string('cpf');
-            $table->date('birth_date');
+            $table->date('date');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('runners');
+        Schema::dropIfExists('races');
     }
 }

@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class RunnerController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return view('runner.index', [
-            'request' => $request
-        ]);
+        return view('livewire.list-runners');
     }
 }

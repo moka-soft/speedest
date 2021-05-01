@@ -8,13 +8,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class CreateRunnerTests extends TestCase
+class CreateRunnerTest extends TestCase
 {
     use RefreshDatabase;
 
     public function test_if_runner_can_be_create()
     {
-        $runner =  Runner::factory()->make();
+        $runner = Runner::factory()->make();
 
         $component = Livewire::test(CreateRunner::class)
             ->set('name',  $runner->name)

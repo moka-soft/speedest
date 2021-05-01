@@ -13,7 +13,7 @@ class SetupCommand extends Command
 
     private const DEFAULT_ADMIN_NAME = 'Usain Bolt';
 
-    private const DEFAULT_ADMIN_EMAIL = 'usain@speedets.dev';
+    private const DEFAULT_ADMIN_EMAIL = 'usain@speedest.dev';
 
     private const DEFAULT_ADMIN_PASSWORD = 'UsainBolt';
 
@@ -26,6 +26,10 @@ class SetupCommand extends Command
 
         $this->info('Migrating database');
         $migrateStatus = $this->call('migrate:status');
+
+        // Publish vendor assets
+        $this->call('vendor:publish', ['--tag' => 'livewire-ui:public', '--force']);
+        $this->call('vendor:publish', ['--tag' => 'public', '--provider' => 'LaravelViews\LaravelViewsServiceProvider', '--force']);
 
         if (!$migrateStatus){
             $overwriteDatabase = $this->choice(

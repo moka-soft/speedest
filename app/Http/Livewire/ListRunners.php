@@ -9,13 +9,13 @@ use LaravelViews\Views\TableView;
 use LaravelViews\Facades\Header;
 use App\Filters\RunnersCreatedAtFilter;
 
-class RunnersTableView extends TableView
+class ListRunners extends TableView
 {
     public $searchBy = ['name', 'cpf'];
 
     public function repository(): Builder
     {
-        return Runner::query()->orderBy('updated_at', 'desc');
+        return Runner::query();
     }
 
     protected function actionsByRow()
@@ -37,7 +37,7 @@ class RunnersTableView extends TableView
         return [
             Header::title('ID')->sortBy('id'),
             Header::title('Name')->sortBy('name'),
-            Header::title('Cpf'),
+            'Cpf',
             Header::title('Birth date')->sortBy('birth_date'),
             Header::title('Created at')->sortBy('created_at'),
             Header::title('Updated at')->sortBy('updated_at'),
@@ -50,7 +50,7 @@ class RunnersTableView extends TableView
             'id' => $model->id,
             'name' => $model->name,
             'cpf' => $model->cpf,
-            'birth_date' => $model->birth_date ? $model->birth_date->format('Y/m/d') : null,
+            'birth_date' => $model->birth_date->format('Y/m/d'),
             'created_at' => $model->created_at->diffForhumans(),
             'updated_at' => $model->updated_at->diffForhumans(),
         ];

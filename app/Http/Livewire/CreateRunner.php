@@ -29,7 +29,7 @@ class CreateRunner extends ModalComponent
 
         session()->flash('notifier',['text'=>__("Runner $this->name has been created!")]);
 
-        redirect()->route('runner.index');
+        redirect()->route('runners');
     }
 
     public function render()
