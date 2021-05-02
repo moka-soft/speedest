@@ -14,17 +14,17 @@ class RaceTypeFactory extends Factory
         $distance = collect([1000, 2500, 3500, 8000])->random() * rand(1,5);
 
         return [
-            'name' => $distance . ' meters ' . $this->type(),
+            'name' => $distance . ' meters ' . self::types()->random(),
             'distance' => $distance,
         ];
     }
 
-    private function type()
+    public static function types()
     {
         return collect([
             'hurdles', 'team race', 'race walk', 'Medley relay',
             'Marathon road relay', 'Standing high jump', 'Standing long jump',
             'Standing triple jump', 'pound weight throw'
-        ])->random();
+        ]);
     }
 }

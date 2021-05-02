@@ -10,7 +10,7 @@
             </x-slot>
 
             <x-slot name="description">
-                {{ __('Here you can put de basic information\'s about the runner') }}
+                {{ __('Create a new runner. Here you add the basic information\'s of runner') }}
             </x-slot>
 
             <x-slot name="form">
@@ -22,7 +22,7 @@
 
                 <div class="col-span-12 sm:col-span-12">
                     <x-jet-label for="cpf" value="{{ __('CPF') }}" />
-                    <x-jet-input id="cpf" type="text" class="mt-1 block w-full" wire:model.defer="cpf" />
+                    <x-jet-input maxlength="11" id="cpf" type="text" class="mt-1 block w-full" wire:model.defer="cpf" />
                     <x-jet-input-error for="cpf" class="mt-2" />
                 </div>
 
@@ -45,9 +45,3 @@
         </x-jet-button>
     </x-slot>
 </x-modal>
-
-<script>
-    const cpfMask = IMask(document.getElementById('cpf'), {
-        mask: '000.000.000-00'
-    });
-</script>

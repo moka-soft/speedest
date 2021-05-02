@@ -8,7 +8,6 @@ use App\Filters\RacesDateFilter;
 use App\Filters\RacesTypeFilter;
 use App\Models\Race;
 use Illuminate\Database\Eloquent\Builder;
-use LaravelViews\Facades\UI;
 use LaravelViews\Views\TableView;
 use LaravelViews\Facades\Header;
 
@@ -58,7 +57,7 @@ class ListRaces extends TableView
             'date' => $model->date->format('Y/m/d'),
             'status' => $model->status,
             'type' => $model->type->name,
-            'distance' => $model->type->distance,
+            'distance' => $model->type->distance / 1000 . ' KM',
             'updated_at' => $model->updated_at->diffForhumans()
         ];
     }

@@ -13,7 +13,7 @@ class CreateRunner extends ModalComponent
 
     protected $rules = [
         'name' => 'required|min:4',
-        'cpf' => 'required|regex:"[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}"|unique:runners',
+        'cpf' => 'required|min:11|max:11|regex:/^\d{3}\d{3}\d{3}\d{2}$/|unique:runners',
         'birth_date' => 'required|date|before:-18 years'
     ];
 

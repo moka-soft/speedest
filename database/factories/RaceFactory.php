@@ -8,18 +8,23 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RaceFactory extends Factory
 {
+    use Faker;
+
     protected $model = Race::class;
 
     public function definition()
     {
+        $days = rand(1, 500);
+
         return [
-            'name' => $this->race(),
-            'type_id' => RaceType::factory()->create()->id,
-            'date' => $this->faker->dateTimeBetween('now', '+3 months')->format('Y-m-d')
+            'name' => self::races()->random(),
+            'date' => $this->randomizeDate(rand(1, 500), rand(0, 1) ? 'addDays' : 'subDays'),
+            'created_at' => $this->randomizeDate($days),
+            'updated_at' =>  $this->randomizeDate($days)
         ];
     }
 
-    private function race()
+    public static function races()
     {
         return collect([
             'The Big Five Marathon', 'The Dipsea Race', 'Niagara Falls Marathon', 'Star Wars Half Marathon',
@@ -33,6 +38,6 @@ class RaceFactory extends Factory
             'Cruce de los Andes', 'Sao Paulo Marathon', 'Seychelles Eco Friendly Marathon', 'Mongolia Sunrise to Sunset',
             'Mongolia Sunrise to Sunset', 'Phuket Island Marathon', 'We Ran It: Hood To Coast Relay', 'Italy Coast to Coast',
             'Napa Valley to Sonoma Half Marathon', 'Barcelona Marathon', 'City2Surf'
-        ])->random();
+        ]);
     }
 }

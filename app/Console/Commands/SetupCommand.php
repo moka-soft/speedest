@@ -19,17 +19,15 @@ class SetupCommand extends Command
 
     public function handle()
     {
-        $this->info("\nSpeedest Installer");
+        $this->call('speedest:install');
+
+        $this->info("\nSpeedest Setup");
         $this->info("--------------------\n");
 
-        $this->maybeGenerateAppKey();
-
         $this->info('Migrating database');
-        $migrateStatus = $this->call('migrate:status');
 
-        // Publish vendor assets
-        $this->call('vendor:publish', ['--tag' => 'livewire-ui:public', '--force']);
-        $this->call('vendor:publish', ['--tag' => 'public', '--provider' => 'LaravelViews\LaravelViewsServiceProvider', '--force']);
+        $migrateStatus = $this->call('migrate:status');
+        $this->call('migrate', ['--force' => true]);
 
         if (!$migrateStatus){
             $overwriteDatabase = $this->choice(
@@ -42,14 +40,14 @@ class SetupCommand extends Command
             );
             if ($overwriteDatabase === 'Yes'){
                 $this->call('migrate:fresh', ['--force' => true]);
+                $this->info('Seeding required data in database');
                 $this->call('db:seed', ['--force' => true]);
+                $this->call('speedest:install');
+                $this->info('Seeding fake data in database');
+                $this->call('db:seed', ['--force' => true, '--class' => 'Database\Seeders\FakerDatabaseSeeder']);
+                $this->info('Set up admin account');
                 $this->setUpAdminAccount();
             }
-        }else{
-            $this->call('migrate', ['--force' => true]);
-            $this->info('Seeding initial data');
-            $this->call('db:seed', ['--force' => true]);
-            $this->setUpAdminAccount();
         }
 
         $this->info('✅ Everything succeeded ✅');
@@ -70,15 +68,5 @@ class SetupCommand extends Command
         $this->comment(
             sprintf('Log in with email %s and password %s', self::DEFAULT_ADMIN_EMAIL, self::DEFAULT_ADMIN_PASSWORD)
         );
-    }
-
-    private function maybeGenerateAppKey(): void
-    {
-        if (!config('app.key')) {
-            $this->info('Generating app key');
-            $this->call('key:generate');
-        } else {
-            $this->comment('App key exists -- skipping');
-        }
     }
 }
