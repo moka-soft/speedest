@@ -18,4 +18,10 @@ class Runner extends Model
     protected $dates = [
         'birth_date'
     ];
+
+    public static  function search($searchKey)
+    {
+        return self::where('name', 'LIKE', '%' . $searchKey . '%')
+            ->orWhere('cpf', 'LIKE', '%' . $searchKey . '%');
+    }
 }
