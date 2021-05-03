@@ -39,12 +39,7 @@ class MarkRaceRunnerUnfinishedAction extends Action
                     'end_at' => null
                 ]
             ]);
-            session()->flash('notifier',['text'=>__('Runner has been marked as a unfinished!')]);
-        } else {
-            session()->flash('notifier', ['type' => 'error', 'text' => __('The Runner can\'t unmarked as a finished!')]);
         }
-
-        redirect()->route('race-runners', $this->race->id);
     }
 }
 

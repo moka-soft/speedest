@@ -30,9 +30,5 @@ class DetachRaceRunnerAction extends Action
     public function handle($model)
     {
         $model->races()->detach($this->race->id);
-
-        session()->flash('notifier', ['text' => __('Runner has been detached!')]);
-
-        redirect()->route('race-runners', $this->race->id);
     }
 }
