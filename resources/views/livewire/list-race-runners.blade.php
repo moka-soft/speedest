@@ -25,7 +25,7 @@
             <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-500">
                 Finished
             </span>
-        @else
+        @elseif($attached)
             <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-red-50 text-red-500">
                 Pending
             </span>

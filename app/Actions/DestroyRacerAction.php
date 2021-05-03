@@ -15,6 +15,8 @@ class DestroyRacerAction extends Action
 
     public function handle($model)
     {
+        $model->runners()->sync([]);
+
         $model->delete();
 
         session()->flash('notifier',['text'=>__("Race $model->name was deleted!")]);

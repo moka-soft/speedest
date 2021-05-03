@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Actions\AttachRunnerRaceAction;
-use App\Actions\DetachRunnerRaceAction;
+use App\Actions\AttachRaceRunnerAction;
+use App\Actions\DetachRaceRunnerAction;
 use App\Actions\MarkRaceRunnerUnfinishedAction;
 use App\Filters\RaceRunnersFilter;
 use App\Models\Runner;
@@ -34,8 +34,8 @@ class ListRaceRunners extends ListView
     {
         return [
             (new MarkRaceRunnerUnfinishedAction)->setRace($this->race),
-            (new AttachRunnerRaceAction)->setRace($this->race),
-            (new DetachRunnerRaceAction)->setRace($this->race)
+            (new AttachRaceRunnerAction)->setRace($this->race),
+            (new DetachRaceRunnerAction)->setRace($this->race)
         ];
     }
 

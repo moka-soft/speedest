@@ -6,7 +6,7 @@ use LaravelViews\Actions\Action;
 use LaravelViews\Actions\Confirmable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class AttachRunnerRaceAction extends Action
+class AttachRaceRunnerAction extends Action
 {
     use Confirmable, HasRaceState, AuthorizesRequests;
 

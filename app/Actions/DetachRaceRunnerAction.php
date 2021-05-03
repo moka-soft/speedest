@@ -5,7 +5,7 @@ namespace App\Actions;
 use LaravelViews\Actions\Action;
 use LaravelViews\Actions\Confirmable;
 
-class DetachRunnerRaceAction extends Action
+class DetachRaceRunnerAction extends Action
 {
     use Confirmable, HasRaceState;
 

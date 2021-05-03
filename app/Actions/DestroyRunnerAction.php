@@ -16,6 +16,8 @@ class DestroyRunnerAction extends Action
 
     public function handle($model, View $view)
     {
+        $model->races()->sync([]);
+
         $model->delete();
 
         session()->flash('notifier',['text'=>__("Runner $model->name was deleted!")]);
