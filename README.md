@@ -74,7 +74,7 @@ Start the local development server:
 
     php artisan serve
 
-#### Demo Application
+#### Demo Application:
 
 You can set faker data using our assistant:
 
@@ -144,7 +144,9 @@ For the first time you need install dependencies, compile assets, install speede
 
 You can now access the server at http://localhost
 
-Or do you can set up the new application with faker data using our assistant:
+##### Demo application:
+
+You can set up the new application with faker data using our assistant:
     
     ./vendor/bin/sail artisan speedest:setup
 
@@ -168,7 +170,7 @@ https://docs.docker.com/engine/reference/commandline/system_prune/
 
 Need rebuild?
 
-./vendor/bin/sail build --no-cache
+    ./vendor/bin/sail build --no-cache
 
 ## Changelog
 
