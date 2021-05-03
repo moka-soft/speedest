@@ -19,5 +19,6 @@ Route::group([
     Route::get('/races', [\App\Http\Controllers\RaceController::class, 'index'])->name('races');
     Route::get('/race/{id}', [\App\Http\Controllers\RaceController::class, 'show'])->name('race.show');
     Route::get('/race/{race_id}/participants', [\App\Http\Controllers\RaceController::class, 'participants'])->name('race-participants.index');
+    Route::get('/race/{race_id}/results', [\App\Http\Controllers\RaceController::class, 'results'])->name('race-results');
 });
 

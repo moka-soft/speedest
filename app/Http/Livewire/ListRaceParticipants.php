@@ -4,17 +4,19 @@ namespace App\Http\Livewire;
 
 use App\Actions\AttachRunnerRaceAction;
 use App\Actions\DetachRunnerRaceAction;
+use App\Actions\MarkRaceParticipationUnfinishedAction;
 use App\Filters\RaceParticipantsFilter;
 use App\Models\Runner;
 use Illuminate\Database\Eloquent\Builder;
 use LaravelViews\Views\ListView;
-use LaravelViews\Facades\Header;
 
 class ListRaceParticipants extends ListView
 {
     public $searchBy = ['name', 'cpf'];
 
     public $paginate = 10;
+
+    public $race;
 
     public $itemComponent = 'livewire.list-race-participants';
 
@@ -23,11 +25,17 @@ class ListRaceParticipants extends ListView
         return Runner::query();
     }
 
+    public function markParticipationFinished($runner_id)
+    {
+        $this->emit('openModal', 'mark-participation-finished', ['race_id' => $this->race->id, 'runner_id' => $runner_id]);
+    }
+
     protected function actionsByRow()
     {
         return [
-            new AttachRunnerRaceAction,
-            new DetachRunnerRaceAction
+            (new MarkRaceParticipationUnfinishedAction)->setRace($this->race),
+            (new AttachRunnerRaceAction)->setRace($this->race),
+            (new DetachRunnerRaceAction)->setRace($this->race)
         ];
     }
 
@@ -35,15 +43,6 @@ class ListRaceParticipants extends ListView
     {
         return [
             new RaceParticipantsFilter
-        ];
-    }
-
-    public function headers(): array
-    {
-        return [
-            Header::title('ID')->sortBy('id'),
-            Header::title('Name')->sortBy('name'),
-            'Cpf',
         ];
     }
 

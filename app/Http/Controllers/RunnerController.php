@@ -6,6 +6,6 @@ class RunnerController extends Controller
 {
     public function index()
     {
-        return view('livewire.list-runners');
+        return view('runner.index');
     }
 }

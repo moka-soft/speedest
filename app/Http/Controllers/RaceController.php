@@ -13,40 +13,55 @@ class RaceController extends Controller
 
     public function show($id)
     {
-        return view('race.show', $this->compose(Race::find($id)));
+        return $this->view('race.show', $id);
     }
 
     public function participants($raceId)
     {
-        return view('race.participants.index', $this->compose(Race::find($raceId)));
+        return $this->view('race.participants.index', $raceId);
+    }
+
+    public function results($raceId)
+    {
+        return $this->view('race.results', $raceId);
     }
 
     private function compose($race)
     {
+        $route = function ($name) use ($race) {
+            return [
+                'name' => $name,
+                'parameters' => [
+                    'id' => $race->id,
+                    'race_id' => $race->id
+                ]
+            ];
+        };
+
         return [
             'race' => $race,
             'navigation' =>  [
                 [
-                    'label' => 'Informations',
-                    'route' => [
-                        'name' => 'race.show',
-                        'parameters' => [
-                            'id' => $race->id
-                        ]
-                    ],
+                    'label' => 'Info',
+                    'route' => $route('race.show'),
                     'icon' => 'heroicon-o-information-circle',
                 ],
                 [
                     'label' => 'Participants',
-                    'route' => [
-                        'name' => 'race-participants.index',
-                        'parameters' => [
-                            'race_id' => $race->id
-                        ]
-                    ],
+                    'route' => $route('race-participants.index'),
                     'icon' => 'heroicon-o-user-group',
+                ],
+                [
+                    'label' => 'Results',
+                    'route' => $route('race-results'),
+                    'icon' => 'heroicon-o-document-report',
                 ]
             ]
         ];
+    }
+
+    private function view($view, $raceId)
+    {
+        return view($view, $this->compose(Race::find($raceId)));
     }
 }

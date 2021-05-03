@@ -15,8 +15,10 @@ class RaceParticipantsFilter extends Filter
     public function options()
     {
         return [
-          'attacheds' => 'attacheds',
-          'detacheds' => 'detacheds'
+          'attached' => 'attached',
+          'detached' => 'detached',
+          'pending' => 'pending',
+          'finished' => 'finished',
         ];
     }
 }
