@@ -21,11 +21,11 @@ class AttachRaceRunnerAction extends Action
 
     public function renderIf($item)
     {
-        $r = $item->races->filter(function ($race)  {
+        $races = $item->races->filter(function ($race)  {
             return $race->id === $this->race->id;
         });
 
-        return $r->count() === 0;
+        return $races->count() === 0;
     }
 
     public function handle($model)
