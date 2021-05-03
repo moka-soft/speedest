@@ -17,15 +17,15 @@
                 <x-jet-input value="{{ $runner_id }}" id="start" type="hidden" class="mt-1 block w-full" wire:model.defer="runner_id" />
                 <x-jet-input value="{{ $race_id }}" id="start" type="hidden" class="mt-1 block w-full" wire:model.defer="race_id" />
                 <div class="col-span-12 sm:col-span-12">
-                    <x-jet-label for="start" value="{{ __('Start') }}" />
-                    <x-jet-input id="start" type="time" class="mt-1 block w-full" wire:model.defer="start" />
-                    <x-jet-input-error for="start" class="mt-2" />
+                    <x-jet-label for="start_at" value="{{ __('Start at') }}" />
+                    <x-jet-input id="start_at" type="time" class="mt-1 block w-full" wire:model.defer="start_at" />
+                    <x-jet-input-error for="start_at" class="mt-2" />
                 </div>
 
                 <div class="col-span-12 sm:col-span-12">
-                    <x-jet-label for="end" value="{{ __('End') }}" />
-                    <x-jet-input id="end" type="time" class="mt-1 block w-full" wire:model.defer="end" />
-                    <x-jet-input-error for="end" class="mt-2" />
+                    <x-jet-label for="end_at" value="{{ __('End at') }}" />
+                    <x-jet-input id="end_at" type="time" class="mt-1 block w-full" wire:model.defer="end_at" />
+                    <x-jet-input-error for="end_at" class="mt-2" />
                 </div>
             </x-slot>
         </x-jet-form-section>

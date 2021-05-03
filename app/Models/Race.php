@@ -41,4 +41,9 @@ class Race extends Model
     {
         return $this->belongsTo(RaceType::class);
     }
+
+    public function runners()
+    {
+        return $this->belongsToMany(Runner::class, 'participations', 'race_id', 'runner_id')->withTimestamps();
+    }
 }

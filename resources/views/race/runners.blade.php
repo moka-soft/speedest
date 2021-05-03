@@ -6,7 +6,7 @@
         </x-jet-section-title>
 
         <div class="mt-5">
-            @livewire('list-race-participants', ['race' => $race])
+            @livewire('list-race-runners', ['race' => $race])
         </div>
     </div>
 </x-race-layout>

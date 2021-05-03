@@ -16,9 +16,9 @@ class RaceController extends Controller
         return $this->view('race.show', $id);
     }
 
-    public function participants($raceId)
+    public function runners($raceId)
     {
-        return $this->view('race.participants.index', $raceId);
+        return $this->view('race.runners', $raceId);
     }
 
     public function results($raceId)
@@ -47,8 +47,8 @@ class RaceController extends Controller
                     'icon' => 'heroicon-o-information-circle',
                 ],
                 [
-                    'label' => 'Participants',
-                    'route' => $route('race-participants.index'),
+                    'label' => 'Runners',
+                    'route' => $route('race-runners'),
                     'icon' => 'heroicon-o-user-group',
                 ],
                 [

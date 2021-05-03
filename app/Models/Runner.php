@@ -24,4 +24,11 @@ class Runner extends Model
         return self::where('name', 'LIKE', '%' . $searchKey . '%')
             ->orWhere('cpf', 'LIKE', '%' . $searchKey . '%');
     }
+
+    public function races()
+    {
+        return $this->belongsToMany(Race::class, 'participations',  'runner_id', 'race_id')
+            ->withTimestamps()
+            ->withPivot('runner_id', 'race_id', 'start_at', 'end_at');
+    }
 }
