@@ -11,7 +11,7 @@ class Runner extends Model
 
     protected $fillable = [
         'name',
-        'cpf',
+        'code',
         'birth_date',
     ];
 
@@ -22,7 +22,7 @@ class Runner extends Model
     public static  function search($searchKey)
     {
         return self::where('name', 'LIKE', '%' . $searchKey . '%')
-            ->orWhere('cpf', 'LIKE', '%' . $searchKey . '%');
+            ->orWhere('code', 'LIKE', '%' . $searchKey . '%');
     }
 
     public function races()

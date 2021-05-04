@@ -10,9 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group([
     'middleware' => ['web', 'auth:sanctum', 'verified'],
+    'prefix' => 'dashboard'
 ], function () {
     Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/runners', [\App\Http\Controllers\RunnerController::class, 'index'])->name('runners');

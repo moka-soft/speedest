@@ -18,12 +18,12 @@ class CreateRunnerTest extends TestCase
 
         $component = Livewire::test(CreateRunner::class)
             ->set('name',  $runner->name)
-            ->set('cpf', $runner->cpf)
+            ->set('code', $runner->code)
             ->set('birth_date', $runner->birth_date)
             ->call('submit');
 
         $this->assertEquals($runner->name, $component->name);
-        $this->assertEquals($runner->cpf, $component->cpf);
+        $this->assertEquals($runner->code, $component->code);
         $this->assertEquals($runner->birth_date, $component->birth_date);
     }
 }

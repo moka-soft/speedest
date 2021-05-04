@@ -5,7 +5,7 @@
     </div>
 
     <div class="flex-1 text-left pr-10">
-        <span>{{ $model->cpf }}</span>
+        <span>{{ $model->code }}</span>
     </div>
 
     <div class="flex-1 text-right lg:text-left">

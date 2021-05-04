@@ -17,7 +17,7 @@ class RunnerFactory extends Factory
 
         return [
             'name' => $this->faker->name,
-            'cpf' => $this->faker->numerify('###########'),
+            'code' => $this->faker->numerify('###########'),
             'birth_date' => $this->faker->date(),
             'created_at' => $this->randomizeDate($days),
             'updated_at' =>  $this->randomizeDate($days)

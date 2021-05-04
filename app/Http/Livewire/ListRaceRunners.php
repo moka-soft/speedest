@@ -12,7 +12,7 @@ use LaravelViews\Views\ListView;
 
 class ListRaceRunners extends ListView
 {
-    public $searchBy = ['name', 'cpf'];
+    public $searchBy = ['name', 'code'];
 
     public $paginate = 10;
 

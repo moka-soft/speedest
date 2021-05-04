@@ -8,13 +8,13 @@ use LivewireUI\Modal\ModalComponent;
 class CreateRunner extends ModalComponent
 {
     public $name;
-    public $cpf;
+    public $code;
     public $birth_date;
 
     protected $rules = [
         'name' => 'required|min:4',
-        'cpf' => 'required|min:11|max:11|regex:/^\d{3}\d{3}\d{3}\d{2}$/|unique:runners',
-        'birth_date' => 'required|date|before:-18 years'
+        'code' => 'required|min:2|max:11|unique:runners',
+        'birth_date' => 'required|date|before:-12 years'
     ];
 
     public function submit()
@@ -23,11 +23,11 @@ class CreateRunner extends ModalComponent
 
         Runner::create([
             'name' => $this->name,
-            'cpf' => $this->cpf,
+            'code' => $this->code,
             'birth_date' => $this->birth_date
         ]);
 
-        session()->flash('notifier',['text'=>__("Runner $this->name has been created!")]);
+        session()->flash('notifier',['text'=>__('Runner $this->name has been created!')]);
 
         redirect()->route('runners');
     }

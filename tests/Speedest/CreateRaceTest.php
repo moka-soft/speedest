@@ -4,6 +4,7 @@ namespace Tests\Speedest;
 
 use App\Http\Livewire\CreateRace;
 use App\Models\Race;
+use App\Models\RaceType;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -14,7 +15,9 @@ class CreateRaceTest extends TestCase
 
     public function test_if_race_can_be_create()
     {
-        $race =  Race::factory()->make();
+        $race = Race::factory()->make([
+            'type_id' =>  RaceType::factory()->create()->id
+        ]);
 
         $component = Livewire::test(CreateRace::class)
             ->set('name',  $race->name)

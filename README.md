@@ -4,10 +4,6 @@
 
 PRs and issues is welcome!
 
-## DB-Schema
-
-![DB-Schemag](db-schema.png)
-
 ----------
 
 ## Getting started

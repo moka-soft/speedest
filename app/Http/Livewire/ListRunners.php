@@ -11,7 +11,7 @@ use App\Filters\RunnersCreatedAtFilter;
 
 class ListRunners extends TableView
 {
-    public $searchBy = ['name', 'cpf'];
+    public $searchBy = ['name', 'code'];
 
     public function repository(): Builder
     {
@@ -37,7 +37,7 @@ class ListRunners extends TableView
         return [
             Header::title('ID')->sortBy('id'),
             Header::title('Name')->sortBy('name'),
-            'Cpf',
+            'Code',
             Header::title('Birth date')->sortBy('birth_date'),
             Header::title('Created at')->sortBy('created_at'),
             Header::title('Updated at')->sortBy('updated_at'),
@@ -49,7 +49,7 @@ class ListRunners extends TableView
         return [
             'id' => $model->id,
             'name' => $model->name,
-            'cpf' => $model->cpf,
+            'code' => $model->code,
             'birth_date' => $model->birth_date->format('Y/m/d'),
             'created_at' => $model->created_at->diffForhumans(),
             'updated_at' => $model->updated_at->diffForhumans(),

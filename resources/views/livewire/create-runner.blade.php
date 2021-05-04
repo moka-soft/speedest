@@ -21,9 +21,9 @@
                 </div>
 
                 <div class="col-span-12 sm:col-span-12">
-                    <x-jet-label for="cpf" value="{{ __('CPF') }}" />
-                    <x-jet-input maxlength="11" id="cpf" type="text" class="mt-1 block w-full" wire:model.defer="cpf" />
-                    <x-jet-input-error for="cpf" class="mt-2" />
+                    <x-jet-label for="code" value="{{ __('Code') }}" />
+                    <x-jet-input maxlength="11" id="code" type="text" class="mt-1 block w-full" wire:model.defer="code" />
+                    <x-jet-input-error for="code" class="mt-2" />
                 </div>
 
                 <div class="col-span-12 sm:col-span-12">
