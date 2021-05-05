@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-octo-app-layout>
     <x-slot name="header">
         <div class="w-full flex flex-col lg:space-y-0 space-y-5 lg:flex-row lg:items-center justify-between bg-white p-3">
             <div>
@@ -37,7 +37,7 @@
     </x-slot>
     <hr>
     <div class="md:flex flex-col md:flex-row md:min-h-screen w-full bg-gray-100">
-        <x-octo-tailwind-sidebar :items="$navigation" />
+        <x-octo-sidebar :items="$navigation" />
         <div class="flex bg-white px-4 flex-col w-full">
             {{ $slot }}
         </div>

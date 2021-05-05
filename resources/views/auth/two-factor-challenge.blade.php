@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-octo-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -6,7 +6,7 @@
 
         <div x-data="{ recovery: false }">
             <div class="mb-4 text-sm text-gray-600" x-show="! recovery">
-                {{ __('Please confirm access to your account by entering the authentication code provided by your authenticator application.') }}
+                {{ __('Please confirm access to your account by entering the authentication code provided by your authenticator guestlication.') }}
             </div>
 
             <div class="mb-4 text-sm text-gray-600" x-show="recovery">
@@ -54,4 +54,4 @@
             </form>
         </div>
     </x-jet-authentication-card>
-</x-guest-layout>
+</x-octo-guest-layout>
