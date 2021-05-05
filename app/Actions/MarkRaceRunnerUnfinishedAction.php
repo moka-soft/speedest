@@ -32,7 +32,7 @@ class MarkRaceRunnerUnfinishedAction extends Action
         $race = $model->races()
             ->wherePivot('race_id', $this->race->id)->get()->first();
 
-        if ($race){
+        if ($race) {
             $model->races()->sync([
                 $this->race->id => [
                     'start_at' => null,

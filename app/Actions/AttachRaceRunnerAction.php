@@ -30,12 +30,11 @@ class AttachRaceRunnerAction extends Action
 
     public function handle($model)
     {
-        $races = $model->races()->where('date', $this->race->date)->get();
-
-        $hasRaceIntheSameDay = $races->count() > 0;
-
-        if (!$hasRaceIntheSameDay){
-           $model->races()->sync($this->race->id);
+        try{
+            $model->attachRace($this->race);
+        }catch (\Exception $exception) {
+            session()->flash('notifier', ['type' => 'error', 'text' => __($exception->getMessage())]);
+            redirect()->route('race-runners', $this->race->id);
         }
     }
 }
