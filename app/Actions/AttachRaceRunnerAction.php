@@ -30,11 +30,12 @@ class AttachRaceRunnerAction extends Action
 
     public function handle($model)
     {
-        try{
+        try {
             $model->attachRace($this->race);
-        }catch (\Exception $exception) {
+        } catch (\Exception $exception) {
             session()->flash('notifier', ['type' => 'error', 'text' => __($exception->getMessage())]);
             redirect()->route('race-runners', $this->race->id);
         }
     }
 }
+

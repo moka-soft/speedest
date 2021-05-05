@@ -18,6 +18,7 @@ class AttachRaceRunnerTest extends TestCase
     {
         // Create actors
         $runner = Runner::factory()->create();
+
         $race = Race::factory()->create([
             'type_id' => RaceType::factory()->create()->id
         ]);
@@ -33,13 +34,10 @@ class AttachRaceRunnerTest extends TestCase
     {
         // Create actors and data
         $runner = Runner::factory()->create();
-        $type = RaceType::factory()->create();
-
-        $someDate = date('Y-m-d');
 
         $raceData = [
-            'type_id' => $type->id,
-            'date' => $someDate
+            'type_id' =>  RaceType::factory()->create()->id,
+            'date' => date('Y-m-d')
         ];
 
         // Create races on the same-day
@@ -50,9 +48,9 @@ class AttachRaceRunnerTest extends TestCase
         try {
             $runner->attachRace($race1);
             $runner->attachRace($race2);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             //Assert
-            $this->assertEquals("Runner has a race on the same-day", $exception->getMessage());
+            $this->assertEquals('Runner has a race on the same-day', $exception->getMessage());
         }
     }
 }
