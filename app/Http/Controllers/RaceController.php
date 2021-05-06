@@ -8,7 +8,7 @@ class RaceController extends Controller
 {
     public function index()
     {
-        return view('livewire.list-races');
+        return view('race.index');
     }
 
     public function show($id)
@@ -28,32 +28,37 @@ class RaceController extends Controller
 
     private function compose($race)
     {
-        $route = function ($name) use ($race) {
-            return [
-                'name' => $name,
-                'parameters' => [
-                    'id' => $race->id,
-                    'race_id' => $race->id
-                ]
-            ];
-        };
-
         return [
             'race' => $race,
             'navigation' =>  [
                 [
                     'label' => 'Info',
-                    'route' => $route('race.show'),
+                    'route' => [
+                        'name' => 'race.show',
+                        'parameters' => [
+                            'id' => $race->id,
+                        ]
+                    ],
                     'icon' => 'heroicon-o-information-circle',
                 ],
                 [
                     'label' => 'Runners',
-                    'route' => $route('race-runners'),
+                    'route' => [
+                        'name' => 'race-runners',
+                        'parameters' => [
+                            'race_id' => $race->id,
+                        ]
+                    ],
                     'icon' => 'heroicon-o-user-group',
                 ],
                 [
                     'label' => 'Results',
-                    'route' => $route('race-results'),
+                    'route' => [
+                        'name' => 'race-results',
+                        'parameters' => [
+                            'race_id' => $race->id,
+                        ]
+                    ],
                     'icon' => 'heroicon-o-document-report',
                 ]
             ]

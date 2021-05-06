@@ -59,4 +59,4 @@
             @endif
         </div>
     </div>
-</x-app-layout>
+</x-octo-app-layout>

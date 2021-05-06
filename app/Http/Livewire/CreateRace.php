@@ -4,10 +4,13 @@ namespace App\Http\Livewire;
 
 use App\Models\Race;
 use App\Models\RaceType;
+use Laravel\Jetstream\InteractsWithBanner;
 use LivewireUI\Modal\ModalComponent;
 
 class CreateRace extends ModalComponent
 {
+    use InteractsWithBanner;
+
     public $name;
     public $type;
     public $date;
@@ -28,9 +31,9 @@ class CreateRace extends ModalComponent
             'type_id' => $this->type
         ]);
 
-        session()->flash('notifier',['text'=>__("Race $this->name has been created!")]);
-
-        redirect()->route('races');
+        $this->banner(__("Race $this->name added."));
+        $this->emit('refreshRacesList');
+        $this->closeModal();
     }
 
     public function render()

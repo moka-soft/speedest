@@ -41,7 +41,6 @@
                     </x-jet-button>
                 </x-slot>
             </x-jet-form-section>
-            <x-jet-section-border />
         </div>
     </div>
 </x-race-layout>

@@ -9,32 +9,57 @@ class Runner extends Model
 {
     use HasFactory;
 
+    /**
+     * Fillable fields
+     * @var array[]
+     */
     protected $fillable = [
         'name',
         'code',
         'birth_date',
     ];
 
+    /**
+     * Model dates.
+     *
+     * @var array
+     */
     protected $dates = [
         'birth_date'
     ];
 
-    public static  function search($searchKey)
+    /**
+     * Search model by term.
+     *
+     * @param $query
+     * @param $term
+     * @return mixed
+     */
+    public function scopeSearch($query, $term)
     {
-        return self::where('name', 'LIKE', '%' . $searchKey . '%')
-            ->orWhere('code', 'LIKE', '%' . $searchKey . '%');
+        return $query->where(
+            fn ($query) => $query->where('name', 'like', '%'.$term.'%')
+                ->orWhere('code', 'like', '%'.$term.'%')
+        );
     }
 
+
+    /**
+     * The Races.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function races()
     {
-        return $this->belongsToMany(Race::class, 'participations',  'runner_id', 'race_id')
+        return $this->belongsToMany(Race::class, 'race_runners',  'runner_id', 'race_id')
             ->withTimestamps()
             ->withPivot('runner_id', 'race_id', 'start_at', 'end_at');
     }
 
     /**
-     * Attach race
+     * Attach the given Race.
      *
+     * @param Race
      * @return void
      * @throws \Exception
      */

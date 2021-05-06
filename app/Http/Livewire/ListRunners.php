@@ -2,57 +2,33 @@
 
 namespace App\Http\Livewire;
 
-use App\Actions\DestroyRunnerAction;
 use App\Models\Runner;
 use Illuminate\Database\Eloquent\Builder;
-use LaravelViews\Views\TableView;
-use LaravelViews\Facades\Header;
-use App\Filters\RunnersCreatedAtFilter;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class ListRunners extends TableView
+class ListRunners extends DataTableComponent
 {
-    public $searchBy = ['name', 'code'];
+    protected $listeners = ['refreshRunnersList' => '$refresh'];
 
-    public function repository(): Builder
-    {
-        return Runner::query();
-    }
-
-    protected function actionsByRow()
+    public function columns(): array
     {
         return [
-            new DestroyRunnerAction
+            Column::make('ID')->sortable(),
+            Column::make('Name')->sortable(),
+            Column::make('Code')->sortable(),
+            Column::make('Actions')->addClass('flex justify-end')
         ];
     }
 
-    protected function filters()
+    public function query(): Builder
     {
-        return [
-            new RunnersCreatedAtFilter
-        ];
+        return Runner::query()
+            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
     }
 
-    public function headers(): array
+    public function rowView(): string
     {
-        return [
-            Header::title('ID')->sortBy('id'),
-            Header::title('Name')->sortBy('name'),
-            'Code',
-            Header::title('Birth date')->sortBy('birth_date'),
-            Header::title('Created at')->sortBy('created_at'),
-            Header::title('Updated at')->sortBy('updated_at'),
-        ];
-    }
-
-    public function row($model): array
-    {
-        return [
-            'id' => $model->id,
-            'name' => $model->name,
-            'code' => $model->code,
-            'birth_date' => $model->birth_date->format('Y/m/d'),
-            'created_at' => $model->created_at->diffForhumans(),
-            'updated_at' => $model->updated_at->diffForhumans(),
-        ];
+        return 'livewire.list-runners-row';
     }
 }
