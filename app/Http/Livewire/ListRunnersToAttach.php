@@ -31,12 +31,13 @@ class ListRunnersToAttach extends ListRunners
         $this->race = Race::find($race['id']);
 
         if (!$this->runnersNotIncluded)
-            $this->runnersNotIncluded = $this->race->runners;
+            $this->runnersNotIncluded = $this->race->runners->pluck('id');
     }
 
     public function attachRunner($id)
     {
         $runner = Runner::find($id);
+        $this->runnersNotIncluded = $this->race->runners->pluck('id');
 
         try {
             $runner->attachRace($this->race);
@@ -62,7 +63,7 @@ class ListRunnersToAttach extends ListRunners
             ->when(!$this->getFilter('search'),
                 fn (Builder $query) => $query->join('race_runners', 'runners.id', '=', 'race_runners.runner_id')
                     ->select('race_runners.*', 'runners.id', 'runners.name', 'runners.code')
-                    ->whereNotIn('race_runners.runner_id', $this->runnersNotIncluded->pluck('id')))
+                    ->whereNotIn('race_runners.runner_id', $this->runnersNotIncluded))
                     ->distinct()
             ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
     }
