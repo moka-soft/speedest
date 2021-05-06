@@ -19,7 +19,6 @@ class InstallCommand extends Command
 
         // Publish vendor assets
         $this->call('vendor:publish', ['--tag' => 'livewire-ui:public', '--force']);
-        $this->call('vendor:publish', ['--tag' => 'public', '--provider' => 'LaravelViews\LaravelViewsServiceProvider', '--force']);
 
         $this->info('✅ Everything succeeded ✅');
     }
