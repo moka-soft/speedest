@@ -2,59 +2,37 @@
 
 namespace App\Http\Livewire;
 
-use App\Actions\AttachRaceRunnerAction;
-use App\Actions\DetachRaceRunnerAction;
-use App\Actions\MarkRaceRunnerUnfinishedAction;
-use App\Filters\RaceRunnersFilter;
-use App\Models\Runner;
+use App\Models\RaceRunner;
 use Illuminate\Database\Eloquent\Builder;
-use LaravelViews\Views\ListView;
+use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class ListRaceRunners extends ListView
+class ListRaceRunners extends ListRunners
 {
-    public $searchBy = ['name', 'code'];
-
-    public $paginate = 10;
-
     public $race;
 
-    public $itemComponent = 'livewire.list-race-runners';
+    protected $listeners = ['refreshRaceRunnersList' => '$refresh'];
 
-    public function repository(): Builder
-    {
-        return Runner::query();
-    }
+    public string $emptyMessage = 'You not has added runners ;(';
 
-    public function markRunnerFinished($runner_id)
-    {
-        $this->emit('openModal', 'mark-race-runner-finished', ['race_id' => $this->race->id, 'runner_id' => $runner_id]);
-    }
-
-    protected function actionsByRow()
+    public function columns(): array
     {
         return [
-            (new MarkRaceRunnerUnfinishedAction)->setRace($this->race),
-            (new AttachRaceRunnerAction)->setRace($this->race),
-            (new DetachRaceRunnerAction)->setRace($this->race)
+            Column::make('Name'),
+            Column::make('Subs. Code'),
+            Column::make('Status'),
+            Column::make('Actions')->addClass('flex justify-end')
         ];
     }
 
-    protected function filters()
+    public function query(): Builder
     {
-        return [
-            (new RaceRunnersFilter())->setRace($this->race)
-        ];
+        return RaceRunner::query()
+            ->where('race_id', '=', $this->race->id)
+            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
     }
 
-    public function data($model): array
+    public function rowView(): string
     {
-        $races = $model->races->filter(function ($race)  {
-            return $race->id === $this->race->id;
-        });
-
-        return [
-            'attached' => $races->count() !== 0,
-            'finished' => isset($races->first()->pivot->end_at)
-        ];
+        return 'livewire.list-race-runners-row';
     }
 }

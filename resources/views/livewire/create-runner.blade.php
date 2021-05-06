@@ -36,11 +36,11 @@
     </x-slot>
 
     <x-slot name="buttons">
-        <x-jet-button wire:click="$emit('closeModal')" class="mr-2 bg-red-900">
+        <x-jet-button wire:click="$emit('closeModal')" wire:loading.attr="disabled" class="mr-2 bg-red-900">
             {{ __('Close') }}
         </x-jet-button>
 
-        <x-jet-button wire:click="submit">
+        <x-jet-button wire:click="submit" wire:loading.attr="disabled">
             {{ __('Save') }}
         </x-jet-button>
     </x-slot>

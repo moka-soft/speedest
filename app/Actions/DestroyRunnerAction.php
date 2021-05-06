@@ -2,22 +2,13 @@
 
 namespace App\Actions;
 
-use LaravelViews\Actions\Action;
-use LaravelViews\Actions\Confirmable;
-use LaravelViews\Views\View;
+use App\Models\Runner;
 
-class DestroyRunnerAction extends Action
+final class DestroyRunnerAction
 {
-    use Confirmable;
-
-    public $title = 'Delete runner';
-
-    public $icon = 'trash';
-
-    public function handle($model, View $view)
+    public function destroy(Runner $runner)
     {
-        $model->races()->sync([]);
-
-        $model->delete();
+        $runner->races()->sync([]);
+        $runner->delete();
     }
 }

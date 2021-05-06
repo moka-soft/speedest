@@ -2,63 +2,35 @@
 
 namespace App\Http\Livewire;
 
-use App\Actions\DestroyRacerAction;
-use App\Actions\ShowRaceAction;
-use App\Filters\RacesDateFilter;
-use App\Filters\RacesTypeFilter;
 use App\Models\Race;
 use Illuminate\Database\Eloquent\Builder;
-use LaravelViews\Views\TableView;
-use LaravelViews\Facades\Header;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Rappasoft\LaravelLivewireTables\Views\Column;
 
-class ListRaces extends TableView
+class ListRaces extends DataTableComponent
 {
-    public $searchBy = ['name'];
+    protected $listeners = ['refreshRacesList' => '$refresh'];
 
-    public function repository(): Builder
-    {
-        return Race::query();
-    }
-
-    protected function actionsByRow()
+    public function columns(): array
     {
         return [
-            new ShowRaceAction,
-            new DestroyRacerAction
+            Column::make('id')->sortable(),
+            Column::make('Name')->sortable(),
+            Column::make('Date')->sortable(),
+            Column::make('Updated at')->sortable(),
+            Column::make('Status'),
+            Column::make('Actions')->addClass('flex justify-end')
         ];
     }
 
-    protected function filters()
+    public function query(): Builder
     {
-        return [
-            new RacesTypeFilter,
-            new RacesDateFilter
-        ];
+        return Race::query()
+            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
     }
 
-    public function headers(): array
+    public function rowView(): string
     {
-        return [
-            Header::title('ID')->sortBy('id'),
-            Header::title('Name')->sortBy('name'),
-            Header::title('Date')->sortBy('date'),
-            'Status',
-            Header::title('Type')->sortBy('type_id'),
-            'Distance',
-            Header::title('Updated at')->sortBy('updated_at')
-        ];
-    }
-
-    public function row($model): array
-    {
-        return [
-            'id' => $model->id,
-            'name' => $model->name,
-            'date' => $model->date->format('Y/m/d'),
-            'status' => $model->status,
-            'type' => $model->type->name,
-            'distance' => $model->type->distance / 1000 . ' KM',
-            'updated_at' => $model->updated_at->diffForhumans()
-        ];
+        return 'livewire.list-races-row';
     }
 }
