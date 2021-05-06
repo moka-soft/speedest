@@ -2,8 +2,8 @@
     <div class="py-10 sm:px-6 lg:px-8">
         <div class="flex justify-between">
             <x-jet-section-title>
-                <x-slot name="title">{{ __('List Runners and Mark as a finished/unfinished') }}</x-slot>
-                <x-slot name="description">{{ __('You can search runners and attach/mark-finished/mark-unfinished it.') }}</x-slot>
+                <x-slot name="title">{{ __('List Runners') }}</x-slot>
+                <x-slot name="description">{{ __('You can list and edit the runner state.') }}</x-slot>
             </x-jet-section-title>
         </div>
 

@@ -42,10 +42,10 @@ class ShowRaceRunner extends ModalComponent
         ]);
 
         if ($updated){
-            $this->banner(__('Runner') . $this->runner->name . ' ' . __('has been marked as a finished!'));
+            $this->banner(__('Runner') . $this->runner->name . ' ' . __('status updated!'));
             $this->emit('refreshRaceRunnersList');
         } else {
-            $this->dangerBanner(__('Runner') . $this->runner->name .  ' ' . __('can\'t marked as a finished!'));
+            $this->dangerBanner(__('Runner') . $this->runner->name .  ' ' . __('can\'t updated!'));
         }
 
         $this->closeModal();

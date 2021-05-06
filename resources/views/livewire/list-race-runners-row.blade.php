@@ -14,13 +14,17 @@
 </x-livewire-tables::table.cell>
 
 <x-livewire-tables::table.cell>
-    @if ($row->start_at && !$row->end_at)
+    @if ($row->status == \App\Enums\RaceRunnerEnum::running())
         <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-500">
-            Running
+           {{ __('Running') }}
         </span>
-    @elseif ($row->end_at)
+    @elseif ($row->status == \App\Enums\RaceRunnerEnum::completed())
         <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-500">
-            Completed
+            {{ __('Completed') }}
+        </span>
+    @elseif ($row->status == \App\Enums\RaceRunnerEnum::pending())
+        <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-gray-50 text-gray-500">
+            {{ __('Pending') }}
         </span>
     @endif
 </x-livewire-tables::table.cell>

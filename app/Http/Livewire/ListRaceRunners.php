@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\RaceRunnerEnum;
 use App\Models\RaceRunner;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filter;
 
 class ListRaceRunners extends ListRunners
 {
@@ -12,7 +14,20 @@ class ListRaceRunners extends ListRunners
 
     protected $listeners = ['refreshRaceRunnersList' => '$refresh'];
 
-    public string $emptyMessage = 'You not has added runners ;(';
+    public string $emptyMessage = 'You not have runners to list ;(';
+
+    public function filters(): array
+    {
+        return [
+            'status' => Filter::make('Status')
+                ->select([
+                    '' => __('All'),
+                    'pending' => RaceRunnerEnum::pending(),
+                    'running' => RaceRunnerEnum::running(),
+                    'completed' => RaceRunnerEnum::completed()
+                ])
+        ];
+    }
 
     public function columns(): array
     {
@@ -28,6 +43,18 @@ class ListRaceRunners extends ListRunners
     {
         return RaceRunner::query()
             ->where('race_id', '=', $this->race->id)
+            ->when($this->getFilter('status'), function ($query, $status) {
+                if ($status == RaceRunnerEnum::pending())
+                    return $query->where('end_at', '=', null)->where('start_at', '=', null);
+
+                if ($status == RaceRunnerEnum::completed())
+                    return $query->where('end_at', '!=', null)->where('start_at', '!=', null);
+
+                if ($status == RaceRunnerEnum::running())
+                    return $query->where('end_at', '=', null)->where('start_at', '!=', null);
+
+                return $query;
+            })
             ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
     }
 

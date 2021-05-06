@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\RaceRunnerEnum;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,6 +29,34 @@ class RaceRunner extends Model
     ];
 
     /**
+     * Model appends.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'status'
+    ];
+
+    /**
+     * Get and set status enumeration.
+     *
+     * @return RaceRunnerEnum
+     */
+    public function getStatusAttribute()
+    {
+        if ($this->start_at && !$this->end_at){
+            return RaceRunnerEnum::running();
+        }
+
+        if ($this->end_at){
+            return RaceRunnerEnum::completed();
+        }
+
+        return RaceRunnerEnum::pending();
+    }
+
+
+    /**
      * Search model by term.
      *
      * @param $query
@@ -38,9 +67,9 @@ class RaceRunner extends Model
     {
         return $query->where(
             fn ($query) => $query->whereHas('runner', function (Builder $query) use ($term) {
-                    $query->where('name', 'like', '%'.$term.'%')
-                        ->orWhere('code', 'like', '%'.$term.'%');
-                })
+                $query->where('name', 'like', '%'.$term.'%')
+                    ->orWhere('code', 'like', '%'.$term.'%');
+            })
                 ->orWhere('id', 'like', '%'.$term.'%')
         );
     }
