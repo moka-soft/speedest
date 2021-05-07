@@ -11,20 +11,27 @@ class ListRunners extends DataTableComponent
 {
     protected $listeners = ['refreshRunnersList' => '$refresh'];
 
+    public function getEmptyMessage(): string
+    {
+        return __('You not have runners to list.');
+    }
+
     public function columns(): array
     {
         return [
-            Column::make('ID')->sortable(),
-            Column::make('Name')->sortable(),
-            Column::make('Code')->sortable(),
-            Column::make('Actions')->addClass('flex justify-end')
+            Column::make(__('id'))->sortable(),
+            Column::make(__('Name'))->sortable(),
+            Column::make(__('Code'))->sortable(),
+            Column::make(__('Updated at'))->sortable(),
+            Column::make(__('Actions'))->addClass('flex justify-end')
         ];
     }
 
     public function query(): Builder
     {
         return Runner::query()
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
+            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term))
+            ->orderBy('updated_at', 'desc');
     }
 
     public function rowView(): string

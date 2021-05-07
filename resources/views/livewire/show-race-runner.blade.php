@@ -1,6 +1,6 @@
 <x-modal form-action="submit">
     <x-slot name="title">
-        {{ __('Update runner status') }} - {{ $race->name }}
+        {{ __('Update runner status') }} - {{ $this->runner->name }}
     </x-slot>
 
     <x-slot name="content">

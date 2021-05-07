@@ -41,11 +41,11 @@ class ShowRaceRunner extends ModalComponent
             'end_at' => $this->end_at ? $this->race->date->format('Y-m-d') . ' ' . $this->end_at : null
         ]);
 
-        if ($updated){
-            $this->banner(__('Runner') . $this->runner->name . ' ' . __('status updated!'));
+        if ($updated) {
+            $this->banner(___('Runner', $this->runner->name,'status updated!'));
             $this->emit('refreshRaceRunnersList');
         } else {
-            $this->dangerBanner(__('Runner') . $this->runner->name .  ' ' . __('can\'t updated!'));
+            $this->dangerBanner(___('Runner', $this->runner->name, 'can\'t updated!'));
         }
 
         $this->closeModal();

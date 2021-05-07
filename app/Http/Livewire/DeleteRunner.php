@@ -22,7 +22,7 @@ class DeleteRunner extends ModalComponent
     {
         (new DestroyRunnerAction())->destroy($this->runner);
 
-        $this->dangerBanner(__('Runner') . ' ' . $this->runner->name . ' ' . __('removed'));
+        $this->dangerBanner(___('Runner', $this->runner->name, 'removed!'));
         $this->emit('refreshRunnersList');
         $this->closeModal();
     }

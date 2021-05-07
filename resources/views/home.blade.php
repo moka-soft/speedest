@@ -4,8 +4,8 @@
             The fastest, most race manager <br /><span class="text-blue-400">on the planet.</span>
         </x-slot>
         <x-slot name="description">
-            Create, edit & share race events with<br />
-            <strong class="text-white">easy and faster guestlication & fully open source</strong>
+            Manage and share your race events<br />
+            <strong class="text-white">easy, faster & fully open source</strong>
             <br />than you can imagine.
         </x-slot>
         <x-slot name="footer">

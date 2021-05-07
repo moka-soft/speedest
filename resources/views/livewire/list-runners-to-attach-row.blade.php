@@ -18,10 +18,10 @@
                 </span>
             </button>
         @else
-            <button disabled wire:click="attachRunner({{ $row->id }})" class="py-2 px-3 text-gray-600 bg-grey-light rounded-full cursor-not-allowed">
+            <button wire:click="detachRunner({{ $row->id }})" class="py-2 px-3 text-gray-600 bg-grey-light rounded-full">
                 <span class="flex items-center">
                     <span class="h-4 w-4">
-                        {{ svg('zondicon-add-solid') }}
+                        {{ svg('zondicon-minus-solid') }}
                     </span>
                 </span>
             </button>

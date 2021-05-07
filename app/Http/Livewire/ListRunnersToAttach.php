@@ -14,8 +14,6 @@ class ListRunnersToAttach extends ListRunners
 
     protected $listeners = ['refreshRunnersToAttachList' => '$refresh'];
 
-    public string $emptyMessage = 'Search a term to to list';
-
     public array $perPageAccepted = [5, 10, 15];
 
     public int $perPage = 5;
@@ -24,28 +22,46 @@ class ListRunnersToAttach extends ListRunners
 
     public $race;
 
-    public $runnersNotIncluded = [];
+    public $runnersAttached = [];
+
+    public function getEmptyMessage(): string
+    {
+        return __('Try search a term.');
+    }
 
     public function mount($race)
     {
         $this->race = Race::find($race['id']);
 
-        if (!$this->runnersNotIncluded)
-            $this->runnersNotIncluded = $this->race->runners->pluck('id');
+        if (!$this->runnersAttached)
+            $this->runnersAttached = $this->race->runners->pluck('id')->toArray();
     }
 
     public function attachRunner($id)
     {
         $runner = Runner::find($id);
-        $this->runnersNotIncluded = $this->race->runners->pluck('id');
 
         try {
             $runner->attachRace($this->race);
-            $this->banner(__("Runner $runner->name attached'."));
+            $this->banner(___('Runner', $runner->name, 'attached.'));
             $this->emit('refreshRaceRunnersList');
             $this->emit('refreshRaceHeader', $this->race);
         } catch (\Exception $exception) {
-            $this->dangerBanner( __($exception->getMessage()));
+            $this->dangerBanner($exception->getMessage());
+        }
+    }
+
+    public function detachRunner($id)
+    {
+        $runner = Runner::find($id);
+
+        try {
+            $runner->detachRace($this->race);
+            $this->dangerBanner(___('Runner', $runner->name, 'detached.'));
+            $this->emit('refreshRaceRunnersList');
+            $this->emit('refreshRaceHeader', $this->race);
+        } catch (\Exception $exception) {
+            $this->dangerBanner($exception->getMessage());
         }
     }
 
@@ -53,19 +69,15 @@ class ListRunnersToAttach extends ListRunners
     {
         return [
             Column::make('Runner'),
-            Column::make('Attach')->addClass('flex justify-end')
+            Column::make(___('Attach', '/', 'Detach'))->addClass('flex justify-end')
         ];
     }
 
     public function query(): Builder
     {
         return Runner::query()
-            ->when(!$this->getFilter('search'),
-                fn (Builder $query) => $query->join('race_runners', 'runners.id', '=', 'race_runners.runner_id')
-                    ->select('race_runners.*', 'runners.id', 'runners.name', 'runners.code')
-                    ->whereNotIn('race_runners.runner_id', $this->runnersNotIncluded))
-                    ->distinct()
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
+            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term))
+            ->when(count($this->runnersAttached) > 0, fn (Builder $query) => $query->whereNotIn('id', $this->runnersAttached));
     }
 
     public function rowView(): string

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\StatusRaceEnum;
+use App\Enums\RaceStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +11,7 @@ class Race extends Model
     use HasFactory;
 
     /**
-     * Fillable fields.
+     * Fill able fields.
      *
      * @var array
      */
@@ -48,28 +48,26 @@ class Race extends Model
      */
     public function scopeSearch($query, $term)
     {
-        return $query->where(
-            fn ($query) => $query->where('name', 'like', '%'.$term.'%')
-                ->orWhere('id', 'like', '%'.$term.'%')
-        );
+        return $query->where('name', 'like', '%'.$term.'%')
+            ->orWhere('id', 'like', '%'.$term.'%');
     }
 
     /**
      * Get and set status enumeration.
      *
-     * @return StatusRaceEnum
+     * @return RaceStatusEnum
      */
     public function getStatusAttribute()
     {
-        if ($this->date->isPast()){
-            return StatusRaceEnum::completed();
-        }
-
         if ($this->date->isToday()){
-            return StatusRaceEnum::running();
+            return RaceStatusEnum::running();
         }
 
-        return StatusRaceEnum::coming();
+        if ($this->date->isPast()){
+            return RaceStatusEnum::completed();
+        }
+
+        return RaceStatusEnum::coming();
     }
 
     /**

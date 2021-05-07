@@ -31,7 +31,7 @@ class CreateRace extends ModalComponent
             'type_id' => $this->type
         ]);
 
-        $this->banner(__("Race $this->name added."));
+        $this->banner(___('Race', $this->name, 'has been created!'));
         $this->emit('refreshRacesList');
         $this->closeModal();
     }

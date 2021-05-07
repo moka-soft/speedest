@@ -20,11 +20,9 @@ class DeleteRace extends ModalComponent
 
     public function deleteRace()
     {
-        $race = $this->race;
+        (new DestroyRacerAction())->destroy($this->race);
 
-        (new DestroyRacerAction())->destroy($race);
-
-        $this->dangerBanner(__("Race $race->name removed."));
+        $this->dangerBanner(___('Race', $this->race->name, 'removed!'));
         $this->emit('refreshRacesList');
         $this->closeModal();
     }

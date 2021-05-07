@@ -1,6 +1,6 @@
 <x-modal>
     <x-slot name="title">
-        {{ __('Attach Runner') }} - {{ $race->name }}
+        {{ ___('Attach','/','Detach', 'Runner') }} - {{ $race->name }}
     </x-slot>
 
     <x-slot name="content">
@@ -8,7 +8,7 @@
     </x-slot>
 
     <x-slot name="buttons">
-        <x-jet-button wire:click="$emit('closeModal')" wire:loading.attr="disabled" class="mr-2 bg-red-900">
+        <x-jet-button wire:click="$emit('closeModal')" wire:loading.attr="disabled" class="bg-red-900">
             {{ __('Close') }}
         </x-jet-button>
     </x-slot>

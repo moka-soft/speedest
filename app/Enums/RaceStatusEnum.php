@@ -9,4 +9,4 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self completed()
  * @method static self running()
  */
-final class StatusRaceEnum extends Enum {}
+final class RaceStatusEnum extends Enum {}

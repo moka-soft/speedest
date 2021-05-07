@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use App\Enums\RaceRunnerEnum;
+use App\Enums\RaceRunnerStatusEnum;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class RaceRunner extends Model
 {
     /**
-     * Fillable fields.
+     * Fill able fields.
      *
-     * @var string[]
+     * @var array
      */
     protected $fillable = [
         'start_at',
@@ -40,19 +40,19 @@ class RaceRunner extends Model
     /**
      * Get and set status enumeration.
      *
-     * @return RaceRunnerEnum
+     * @return RaceRunnerStatusEnum
      */
     public function getStatusAttribute()
     {
         if ($this->start_at && !$this->end_at){
-            return RaceRunnerEnum::running();
+            return RaceRunnerStatusEnum::running();
         }
 
         if ($this->end_at){
-            return RaceRunnerEnum::completed();
+            return RaceRunnerStatusEnum::completed();
         }
 
-        return RaceRunnerEnum::pending();
+        return RaceRunnerStatusEnum::pending();
     }
 
 
@@ -65,13 +65,10 @@ class RaceRunner extends Model
      */
     public function scopeSearch($query, $term)
     {
-        return $query->where(
-            fn ($query) => $query->whereHas('runner', function (Builder $query) use ($term) {
-                $query->where('name', 'like', '%'.$term.'%')
-                    ->orWhere('code', 'like', '%'.$term.'%');
-            })
-                ->orWhere('id', 'like', '%'.$term.'%')
-        );
+        return $query->whereHas('runner', function (Builder $query) use ($term) {
+            return $query->where('name', 'like', '%'.$term.'%')
+                ->orWhere('code', 'like', '%'.$term.'%');
+        })->orWhere('id', 'like', '%'.$term.'%');
     }
 
     /**

@@ -5,6 +5,14 @@
                 <x-slot name="title">{{ __('List Runners') }}</x-slot>
                 <x-slot name="description">{{ __('You can list and edit the runner state.') }}</x-slot>
             </x-jet-section-title>
+
+            <button onclick='Livewire.emit("openModal", "attach-race-runner", @json(["race" => $race]))' type="button" class="inline-flex h-7 items-center px-3 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
+                <span class="flex items-center">
+                    <span class="h-4 w-4">
+                          {{ svg('zondicon-add-outline') }}
+                    </span>
+                </span>
+            </button>
         </div>
 
         <div class="mt-5">

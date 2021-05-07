@@ -3,10 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\Runner;
+use Laravel\Jetstream\InteractsWithBanner;
 use LivewireUI\Modal\ModalComponent;
 
 class CreateRunner extends ModalComponent
 {
+    use InteractsWithBanner;
+
     public $name;
     public $code;
     public $birth_date;
@@ -27,9 +30,9 @@ class CreateRunner extends ModalComponent
             'birth_date' => $this->birth_date
         ]);
 
-        session()->flash('notifier',['text'=>__('Runner $this->name has been created!')]);
-
-        redirect()->route('runners');
+        $this->banner(___('Runner', $this->name, 'has been created!'));
+        $this->emit('refreshRunnersList');
+        $this->closeModal();
     }
 
     public function render()

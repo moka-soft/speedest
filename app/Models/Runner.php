@@ -10,8 +10,9 @@ class Runner extends Model
     use HasFactory;
 
     /**
-     * Fillable fields
-     * @var array[]
+     * Fill able fields.
+     *
+     * @var array
      */
     protected $fillable = [
         'name',
@@ -37,12 +38,9 @@ class Runner extends Model
      */
     public function scopeSearch($query, $term)
     {
-        return $query->where(
-            fn ($query) => $query->where('name', 'like', '%'.$term.'%')
-                ->orWhere('code', 'like', '%'.$term.'%')
-        );
+        return $query->where('name', 'like', '%'.$term.'%')
+            ->orWhere('code', 'like', '%'.$term.'%');
     }
-
 
     /**
      * The Races.
@@ -73,5 +71,17 @@ class Runner extends Model
             throw new \Exception('Runner has a race on the same-day');
 
         $this->races()->attach($race->id);
+    }
+
+    /**
+     * Detach the given Race.
+     *
+     * @param Race
+     * @return void
+     * @throws \Exception
+     */
+    public function detachRace(Race $race)
+    {
+        $this->races()->detach($race->id);
     }
 }

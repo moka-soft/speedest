@@ -10,7 +10,7 @@
             </x-slot>
 
             <x-slot name="description">
-                {{ __('Create a new race. Here you add the name and properties of race') }}
+                {{ ___('Create a new race. Here you add the name and properties of race') }}
             </x-slot>
 
             <x-slot name="form">

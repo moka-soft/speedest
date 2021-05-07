@@ -32,7 +32,7 @@ class RaceController extends Controller
             'race' => $race,
             'navigation' =>  [
                 [
-                    'label' => 'Info',
+                    'label' => __('Info'),
                     'route' => [
                         'name' => 'race.show',
                         'parameters' => [
@@ -42,7 +42,7 @@ class RaceController extends Controller
                     'icon' => 'heroicon-o-information-circle',
                 ],
                 [
-                    'label' => 'Runners',
+                    'label' => __('Runners'),
                     'route' => [
                         'name' => 'race-runners',
                         'parameters' => [
@@ -52,7 +52,7 @@ class RaceController extends Controller
                     'icon' => 'heroicon-o-user-group',
                 ],
                 [
-                    'label' => 'Results',
+                    'label' => __('Results'),
                     'route' => [
                         'name' => 'race-results',
                         'parameters' => [

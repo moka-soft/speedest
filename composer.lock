@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/a2insights/octo-core.git",
-                "reference": "5952db7c81531e06cb1d58dd2a24e12a1a864c93"
+                "reference": "12a2da965c0da7c41f7bc0a5fbe27a6f85c5ad76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a2insights/octo-core/zipball/5952db7c81531e06cb1d58dd2a24e12a1a864c93",
-                "reference": "5952db7c81531e06cb1d58dd2a24e12a1a864c93",
+                "url": "https://api.github.com/repos/a2insights/octo-core/zipball/12a2da965c0da7c41f7bc0a5fbe27a6f85c5ad76",
+                "reference": "12a2da965c0da7c41f7bc0a5fbe27a6f85c5ad76",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +73,7 @@
                 "issues": "https://github.com/a2insights/octo-core/issues",
                 "source": "https://github.com/a2insights/octo-core/tree/master"
             },
-            "time": "2021-05-06T14:31:11+00:00"
+            "time": "2021-05-07T13:22:57+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -4574,16 +4574,16 @@
         },
         {
             "name": "spatie/laravel-package-tools",
-            "version": "1.6.3",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-package-tools.git",
-                "reference": "97b53951e9623b3e38babf274c335913bf320a1a"
+                "reference": "a28108b61dac8a83de6c97f09a5a1e98f4d75522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/97b53951e9623b3e38babf274c335913bf320a1a",
-                "reference": "97b53951e9623b3e38babf274c335913bf320a1a",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/a28108b61dac8a83de6c97f09a5a1e98f4d75522",
+                "reference": "a28108b61dac8a83de6c97f09a5a1e98f4d75522",
                 "shasum": ""
             },
             "require": {
@@ -4622,7 +4622,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-package-tools/issues",
-                "source": "https://github.com/spatie/laravel-package-tools/tree/1.6.3"
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.7.0"
             },
             "funding": [
                 {
@@ -4630,7 +4630,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-27T06:17:34+00:00"
+            "time": "2021-05-06T21:49:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
