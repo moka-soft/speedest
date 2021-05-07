@@ -1,10 +1,11 @@
-<x-octo-app-layout>
+<x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="grid mb-4 pb-10 px-8 mx-4 rounded-3xl ">
+
+    <div class="grid max-w-7xl  mx-auto mb-4 pb-10 px-8 mx-4 rounded-3xl ">
         <div class="grid grid-cols-12 gap-6">
             <div class="grid grid-cols-12 col-span-12 gap-6 xxl:col-span-9">
                 <div class="col-span-12 mt-8">
@@ -157,4 +158,4 @@
             </div>
         </div>
     </div>
-</x-octo-app-layout>
+</x-app-layout>

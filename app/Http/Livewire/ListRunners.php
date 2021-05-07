@@ -11,10 +11,7 @@ class ListRunners extends DataTableComponent
 {
     protected $listeners = ['refreshRunnersList' => '$refresh'];
 
-    public function getEmptyMessage(): string
-    {
-        return __('You not have runners to list.');
-    }
+    public string $emptyMessage ='You not have runners to list.';
 
     public function columns(): array
     {

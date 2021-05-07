@@ -1,4 +1,4 @@
-<x-octo-guest-layout>
+<x-guest-layout>
     <x-octo-hero>
         <x-slot name="headline">
             The fastest, most race manager <br /><span class="text-blue-400">on the planet.</span>
@@ -29,4 +29,4 @@
             </div>
         </x-slot>
     </x-octo-hero>
-</x-octo-guest-layout>
+</x-guest-layout>

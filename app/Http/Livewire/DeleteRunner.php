@@ -15,7 +15,7 @@ class DeleteRunner extends ModalComponent
 
     public function mount($runner)
     {
-        $this->runner = Runner::find($runner['id']);
+        $this->runner = Runner::findOrFail($runner['id']);
     }
 
     public function deleteRunner()

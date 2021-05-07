@@ -1,5 +1,4 @@
 @props(['formAction' => false])
-
 <div>
     @if($formAction)
         <form wire:submit.prevent="{{ $formAction }}">

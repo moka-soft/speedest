@@ -24,14 +24,11 @@ class ListRunnersToAttach extends ListRunners
 
     public $runnersAttached = [];
 
-    public function getEmptyMessage(): string
-    {
-        return __('Try search a term.');
-    }
+    public string $emptyMessage ='Try search a term.';
 
     public function mount($race)
     {
-        $this->race = Race::find($race['id']);
+        $this->race = Race::findOrFail($race['id']);
 
         if (!$this->runnersAttached)
             $this->runnersAttached = $this->race->runners->pluck('id')->toArray();
@@ -39,7 +36,7 @@ class ListRunnersToAttach extends ListRunners
 
     public function attachRunner($id)
     {
-        $runner = Runner::find($id);
+        $runner = Runner::findOrFail($id);
 
         try {
             $runner->attachRace($this->race);
@@ -53,7 +50,7 @@ class ListRunnersToAttach extends ListRunners
 
     public function detachRunner($id)
     {
-        $runner = Runner::find($id);
+        $runner = Runner::findOrFail($id);
 
         try {
             $runner->detachRace($this->race);
@@ -77,7 +74,7 @@ class ListRunnersToAttach extends ListRunners
     {
         return Runner::query()
             ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term))
-            ->when(count($this->runnersAttached) > 0, fn (Builder $query) => $query->whereNotIn('id', $this->runnersAttached));
+            ->when(count($this->runnersAttached) > 0 && !$this->getFilter('search'), fn (Builder $query) => $query->whereNotIn('id', $this->runnersAttached));
     }
 
     public function rowView(): string

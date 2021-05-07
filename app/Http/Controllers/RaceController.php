@@ -67,6 +67,6 @@ class RaceController extends Controller
 
     private function view($view, $raceId)
     {
-        return view($view, $this->compose(Race::find($raceId)));
+        return view($view, $this->compose(Race::findOrFail($raceId)));
     }
 }

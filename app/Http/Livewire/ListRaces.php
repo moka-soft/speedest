@@ -13,10 +13,7 @@ class ListRaces extends DataTableComponent
 {
     protected $listeners = ['refreshRacesList' => '$refresh'];
 
-    public function getEmptyMessage(): string
-    {
-        return __('You not have races to list.');
-    }
+    public string $emptyMessage = 'You not have races to list.';
 
     public function filters(): array
     {

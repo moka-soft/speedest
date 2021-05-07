@@ -25,15 +25,15 @@
 <x-livewire-tables::table.cell>
     @if ($row->status == \App\Enums\RaceStatusEnum::coming())
         <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-yellow-50 text-yellow-500">
-            Comming
+            {{ __('Comming') }}
         </span>
     @elseif ($row->status == \App\Enums\RaceStatusEnum::running())
         <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-500">
-            Running
+            {{ __('Running') }}
         </span>
     @elseif ($row->status == \App\Enums\RaceStatusEnum::completed())
         <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-500">
-            Completed
+            {{ __('Completed') }}
         </span>
     @endif
 </x-livewire-tables::table.cell>

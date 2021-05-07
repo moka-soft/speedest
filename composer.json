@@ -24,6 +24,7 @@
         "pusher/pusher-php-server": "^5.0",
         "rappasoft/laravel-livewire-tables": "^1.6",
         "spatie/laravel-enum": "^2.5",
+        "spatie/laravel-newsletter": "^4.9",
         "tightenco/ziggy": "^1.1"
     },
     "require-dev": {

@@ -25,10 +25,20 @@
                 <span> ... </span>
             </span>
 
-            <span class="inline-flex text-gray-500 space-x-2 items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
-                <span>{{ $race->status }}</span>
-            </span>
+            @if ($race->status == \App\Enums\RaceStatusEnum::coming())
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-yellow-50 text-yellow-500">
+                    {{ __('Comming') }}
+                </span>
+            @elseif ($race->status == \App\Enums\RaceStatusEnum::running())
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-500">
+                    {{ __('Running') }}
+                </span>
+            @elseif ($race->status == \App\Enums\RaceStatusEnum::completed())
+                <span class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-500">
+                    {{ __('Completed') }}
+                </span>
+            @endif
+
         </div>
     </div>
 </div>

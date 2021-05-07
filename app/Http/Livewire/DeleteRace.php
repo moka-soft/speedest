@@ -15,7 +15,7 @@ class DeleteRace extends ModalComponent
 
     public function mount($race)
     {
-        $this->race = Race::find($race['id']);
+        $this->race = Race::findOrFail($race['id']);
     }
 
     public function deleteRace()

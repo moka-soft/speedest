@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\RaceRunner;
+use App\Models\Runner;
 use Laravel\Jetstream\InteractsWithBanner;
 use LivewireUI\Modal\ModalComponent;
 
@@ -23,7 +24,7 @@ class ShowRaceRunner extends ModalComponent
 
     public function mount($race_runner)
     {
-        $this->race_runner = RaceRunner::find($race_runner['id']);
+        $this->race_runner = RaceRunner::find($race_runner['id']) ?? abort(404);
         $this->runner = $this->race_runner->runner;
         $this->race = $this->race_runner->race;
         $this->start_at = $this->race_runner->start_at ? $this->race_runner->start_at->format('H:i') : null;

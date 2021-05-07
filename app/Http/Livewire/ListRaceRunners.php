@@ -16,12 +16,9 @@ class ListRaceRunners extends ListRunners
 
     public $race;
 
-    protected $listeners = ['refreshRaceRunnersList' => '$refresh'];
+    public string $emptyMessage = 'You not have runners to list.';
 
-    public function getEmptyMessage(): string
-    {
-        return __('You not have runners to list.');
-    }
+    protected $listeners = ['refreshRaceRunnersList' => '$refresh'];
 
     public function filters(): array
     {
@@ -48,12 +45,11 @@ class ListRaceRunners extends ListRunners
 
     public function detachRunner($id)
     {
-        $runner = Runner::find($id);
+        $runner = Runner::findOrFail($id);
 
         try {
             $runner->detachRace($this->race);
             $this->dangerBanner(___('Runner', $runner->name, 'detached.'));
-            $this->emit('refreshRaceRunnersList');
             $this->emit('refreshRaceHeader', $this->race);
         } catch (\Exception $exception) {
             $this->dangerBanner($exception->getMessage());

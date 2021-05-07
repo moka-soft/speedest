@@ -1,4 +1,4 @@
-<x-octo-app-layout>
+<x-app-layout>
     <x-slot name="header">
         @livewire('race-header',  ['race' => $race])
     </x-slot>
@@ -9,4 +9,4 @@
             {{ $slot }}
         </div>
     </div>
-</x-octo-app-layout>
+</x-app-layout>
