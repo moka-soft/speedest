@@ -11,9 +11,9 @@ class Subscribe extends ModalComponent
 {
     use InteractsWithBanner;
 
-    public $headline= 'Is coming soon';
+    public $headline= 'Something new is coming!';
 
-    public $description = 'Under construction. This application is just a beta demonstration, we not persist your data. Subscribe for new updates.';
+    public $description = 'This application is on for testers. But you can test too: email: usain@speedest.dev password: UsainBolt. If you want to receive updates, join in our newsletter.';
 
     public $email;
 
@@ -29,7 +29,6 @@ class Subscribe extends ModalComponent
     {
         $this->close = (bool) request()->cookie($this->cookieName);
     }
-
 
     public function hiddeBanner()
     {

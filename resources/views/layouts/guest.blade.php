@@ -29,6 +29,7 @@
         <main style="background: #f7f7f7" class="font-sans antialiased">
             {{ $slot }}
         </main>
+
         <footer class="bg-gray-800 bottom-0 shadow-2xl">
             <div class="max-w-7xl sha mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
                 <div class="xl:grid xl:grid-cols-3 xl:gap-8">
@@ -90,6 +91,7 @@
         </footer>
     </div>
 
+    @stack('modals')
     @livewire('livewire-ui-modal')
     @livewireUIScripts
     @livewireScripts

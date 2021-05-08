@@ -1,5 +1,6 @@
 <div x-data="{ showBanner: @entangle('close') }"
      x-show="!showBanner"
+     style="display: none;"
      class="flex flex-col md:h-32 bg-white shadow-lg overflow-hidden md:flex-row">
     <div class="absolute flex justify-end inset-x-0 top-0">
         <button
@@ -15,7 +16,7 @@
     <div class="md:flex items-center justify-center md:w-1/2 md:bg-gray-700">
         <div class="py-2 px-8 md:py-0">
             <h2 class="text-gray-700 text-2xl font-bold md:text-gray-100">{{ $headline }}</h2>
-            <p class="mt-2 text-gray-600 md:text-gray-400">{{ $description }}</p>
+            <p class="mt-1 text-gray-600 md:text-gray-400">{{ $description }}</p>
         </div>
     </div>
     <div class="sm:flex items-center justify-center pb-6 md:py-0 md:w-1/2 md:border-b-8 border-gray-700">
