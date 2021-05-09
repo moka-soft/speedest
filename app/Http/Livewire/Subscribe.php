@@ -23,6 +23,8 @@ class Subscribe extends ModalComponent
 
     public bool $close = false;
 
+    public bool $closable = true;
+
     private string $cookieName = 'subscribe_show';
 
     public function mount()
@@ -55,7 +57,8 @@ class Subscribe extends ModalComponent
     {
         return view('livewire.subscribe', [
             'headline' =>  $this->headline,
-            'description' => $this->description
+            'description' => $this->description,
+            'closable' =>  $this->closable
         ]);
     }
 }
