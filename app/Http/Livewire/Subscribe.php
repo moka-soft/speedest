@@ -13,7 +13,7 @@ class Subscribe extends ModalComponent
 
     public $headline= 'Something new is coming!';
 
-    public $description = 'This application is on for testers. But you can test too: email: usain@speedest.dev password: UsainBolt. If you want to receive updates, join in our newsletter.';
+    public $description = 'This application is on for testers. But you can test too. email: usain@speedest.dev password: UsainBolt. If you want to receive updates join our newsletter.';
 
     public $email;
 

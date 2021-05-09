@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <div class="flex sp-4 sm:px-6 sm:py-4 justify-end">
+            <div class="flex sp-4 bg-gray-100 p-4 sm:px-6 sm:py-4 justify-end">
                 {{ $buttons }}
             </div>
             @if($formAction)

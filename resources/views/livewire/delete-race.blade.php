@@ -12,7 +12,7 @@
             {{ __('Cancel') }}
         </x-jet-button>
 
-        <x-jet-danger-button class="ml-2" wire:click="deleteRace" wire:loading.attr="disabled">
+        <x-jet-danger-button class="ml-2 p-4" wire:click="deleteRace" wire:loading.attr="disabled">
             {{ ___('Delete', 'Race') }}
         </x-jet-danger-button>
     </x-slot>
