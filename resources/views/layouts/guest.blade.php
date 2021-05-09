@@ -30,8 +30,8 @@
             {{ $slot }}
         </main>
 
-        <footer class="bg-gray-800 bottom-0 shadow-2xl">
-            <div class="w-full min-h-screen flex items-center justify-center bg-grey-light">
+        <footer class="bg-gray-800 bottom-0 shadow-2xl pt-5">
+            <div class="w-full pt-10 flex items-center justify-center bg-grey-light">
                 <div class="md:w-2/3 w-full px-4 text-white flex flex-col">
 
                     <div class="flex flex-col md:flex-row md:justify-between">
