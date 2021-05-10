@@ -19,7 +19,7 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        @livewire('subscribe')
+        @livewire('octo-subscribe')
 
         <x-jet-banner />
 
@@ -41,6 +41,7 @@
             </main>
         </div>
 
+        @stack('modals')
         @livewire('livewire-ui-modal')
         @livewireUIScripts
         @livewireScripts

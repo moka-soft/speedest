@@ -4,7 +4,9 @@
     "description": "Start the race!",
     "keywords": [
         "laravel",
-        "php"
+        "php",
+        "octo",
+        "sass"
     ],
     "license": "MIT",
     "require": {

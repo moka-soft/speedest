@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/a2insights/octo-core.git",
-                "reference": "67bf7c0782c94966a60ea95297b3879ccfeb40e5"
+                "reference": "71fbb8236cae9c1fe7141c98ff681180cd6bcf3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a2insights/octo-core/zipball/67bf7c0782c94966a60ea95297b3879ccfeb40e5",
-                "reference": "67bf7c0782c94966a60ea95297b3879ccfeb40e5",
+                "url": "https://api.github.com/repos/a2insights/octo-core/zipball/71fbb8236cae9c1fe7141c98ff681180cd6bcf3d",
+                "reference": "71fbb8236cae9c1fe7141c98ff681180cd6bcf3d",
                 "shasum": ""
             },
             "require": {
@@ -27,7 +27,6 @@
                 "ext-json": "*",
                 "hieu-le/active": "^8.0",
                 "illuminate/support": "^8.0",
-                "joelbutcher/socialstream": "^3.0",
                 "laravel/jetstream": "^2.2",
                 "livewire/livewire": "^2.4",
                 "php": "^7.3|^8.0"
@@ -67,13 +66,16 @@
             "description": "This is a part of octo system",
             "homepage": "https://github.com/a2ensite/octo-core",
             "keywords": [
-                "octo"
+                "laravel",
+                "octo",
+                "php",
+                "sass"
             ],
             "support": {
                 "issues": "https://github.com/a2insights/octo-core/issues",
                 "source": "https://github.com/a2insights/octo-core/tree/master"
             },
-            "time": "2021-05-07T19:24:44+00:00"
+            "time": "2021-05-10T10:27:28+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -2585,16 +2587,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "19a9673b833cc37770439097b381d86cd125bfe8"
+                "reference": "2651c497f005de305c7ba3f232cbd87b8c00ee8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/19a9673b833cc37770439097b381d86cd125bfe8",
-                "reference": "19a9673b833cc37770439097b381d86cd125bfe8",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/2651c497f005de305c7ba3f232cbd87b8c00ee8c",
+                "reference": "2651c497f005de305c7ba3f232cbd87b8c00ee8c",
                 "shasum": ""
             },
             "require": {
@@ -2682,7 +2684,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-01T19:00:49+00:00"
+            "time": "2021-05-08T16:08:00+00:00"
         },
         {
             "name": "league/flysystem",
@@ -4454,16 +4456,16 @@
         },
         {
             "name": "spatie/enum",
-            "version": "3.8.0",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/enum.git",
-                "reference": "9da7dfe60deabeabee217125b505e28107ca4a84"
+                "reference": "5870275f3811dc63c08200b1536ab2f8618b6a52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/enum/zipball/9da7dfe60deabeabee217125b505e28107ca4a84",
-                "reference": "9da7dfe60deabeabee217125b505e28107ca4a84",
+                "url": "https://api.github.com/repos/spatie/enum/zipball/5870275f3811dc63c08200b1536ab2f8618b6a52",
+                "reference": "5870275f3811dc63c08200b1536ab2f8618b6a52",
                 "shasum": ""
             },
             "require": {
@@ -4526,7 +4528,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-12T13:24:11+00:00"
+            "time": "2021-05-10T09:27:50+00:00"
         },
         {
             "name": "spatie/laravel-enum",
