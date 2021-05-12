@@ -8,15 +8,6 @@
         "octo",
         "sass"
     ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../../a2insights/octo/octo-core",
-            "options": {
-                "symlink": true
-            }
-        }
-    ],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",

@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18c655be8f9eafe67194ab9282c8f62c",
+    "content-hash": "d2a154c9af6fe30960a0e110c7508302",
     "packages": [
         {
             "name": "a2insights/octo-core",
             "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/a2insights/octo-core.git",
+                "reference": "338afeaa0636b7d73633544000bb175d5bcec306"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../a2insights/octo/octo-core",
-                "reference": "71fbb8236cae9c1fe7141c98ff681180cd6bcf3d"
+                "type": "zip",
+                "url": "https://api.github.com/repos/a2insights/octo-core/zipball/338afeaa0636b7d73633544000bb175d5bcec306",
+                "reference": "338afeaa0636b7d73633544000bb175d5bcec306",
+                "shasum": ""
             },
             "require": {
                 "blade-ui-kit/blade-heroicons": "^0.3",
@@ -29,6 +35,7 @@
                 "orchestra/testbench": "^6.0",
                 "phpunit/phpunit": "^9.3"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -45,16 +52,7 @@
                     "Octo\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Octo\\Tests\\": "tests"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -73,10 +71,11 @@
                 "php",
                 "sass"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/a2insights/octo-core/issues",
+                "source": "https://github.com/a2insights/octo-core/tree/master"
+            },
+            "time": "2021-05-12T14:54:16+00:00"
         },
         {
             "name": "asm89/stack-cors",
