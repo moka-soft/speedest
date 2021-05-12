@@ -32,7 +32,7 @@
 
         <x-footer>
             <div class="flex flex-col md:flex-row md:justify-between">
-                @livewire('octo-subscribe', ['closable' => false])
+                @livewire('octo-subscribe', ['closable' => false, 'bg' => ''])
             </div>
             <x-slot name="navigation">
                 <p>{{ config('app.name') }}</p>
