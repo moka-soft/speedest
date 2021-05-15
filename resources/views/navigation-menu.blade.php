@@ -20,12 +20,12 @@
                             {{ __('Dashboard') }}
                         </x-jet-nav-link>
 
-                        <x-jet-nav-link href="{{ route('races') }}" :active="request()->routeIs('races')">
-                            {{ __('Races') }}
-                        </x-jet-nav-link>
-
                         <x-jet-nav-link href="{{ route('runners') }}" :active="request()->routeIs('runners')">
                             {{ __('Runners') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('races') }}" :active="request()->routeIs('races')">
+                            {{ __('Races') }}
                         </x-jet-nav-link>
                     @endauth
                 </div>
