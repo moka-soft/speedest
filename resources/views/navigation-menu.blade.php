@@ -162,7 +162,7 @@
                         </x-jet-responsive-nav-link>
                     @endif
 
-                <!-- Authentication -->
+                    <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
