@@ -14,7 +14,7 @@ Please check the official laravel installation guide for server requirements bef
 
 Clone the repository:
 
-    git clone https://github.com/Atiladanvi/speedest.git
+    git clone https://github.com/speedest/speedest.git
 
 Switch to the repo folder:
 
